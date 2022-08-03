@@ -1,0 +1,86 @@
+#:import utils kivy.utils
+<LoginScreen>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            canvas:
+                Color: 
+                    rgb: utils.get_color_from_hex("#800000")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            cols:1
+            padding: 15, 15
+            spacing: 20, 20
+            Label:
+                text: "DICTIONARY"
+                font_size: '20'
+            TextInput:
+                id: Word
+                hint_text: "Enter a word you want defined"
+            Label:
+                id: DWord
+                text: ""
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: "Define"
+                    on_press: root.word_meaning(root.ids.Word.text)
+                    size_hint: 0.9, 0.3
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+                
+
+<SignUpScreen>:
+    GridLayout:
+        cols:1
+        Label:
+            text: "Sign up now for a space journey!"
+        TextInput:
+            id: username
+            hint_text: "Username"
+        TextInput:
+            id: password
+            hint_text: "Password"
+        Button:
+            text: "Submit"
+            on_press: root.add_user(root.ids.username.text, root.ids.password.text)
+
+<SignUpSuccess>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign up successfull"
+        Button:
+            text: "login page"
+            on_press: root.go_to_login()
+
+<LoginSuccess>:
+    GridLayout:
+        cols: 1
+        Button: 
+            text: "logout"
+            on_press: root.log_out()
+        Label: 
+            text: "how do you feel"
+        TextInput: 
+            id: feeling
+            hint_text: "sad, unloved, happy"
+        Button:
+            text: "enlighten me"
+            on_press: root.get_quote(root.ids.feeling.text)
+        Label:
+            id: quotes
+            text: ""
+
+        
+<RootWidget>:
+    LoginScreen:
+        name: "Login_Screen"
+    SignUpScreen:
+        name: "Sign_up_screen"
+    SignUpSuccess:
+        name: "Sign_up_success"
+    LoginSuccess:
+        name: "Login_success"

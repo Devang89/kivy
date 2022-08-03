@@ -1,0 +1,208 @@
+#:import utils kivy.utils
+
+<LoginScreen>:
+    GridLayout:
+        size_hint: 0.2, 0.2
+        cols:1
+        Label:
+            text: "Choose your form of energy conumption"
+    GridLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#39B3F2")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        cols:1
+        GridLayout:
+            cols:2
+            size_hint: .5, .5
+            padding: 20, 20
+            spacing: 5, 5
+            ImageButton:
+                size_hint: 0.1, 0.1
+                source: "icons//soccer-ball.png"
+                on_release: root.soccer()
+                on_press: 
+                    self.source = "icons//SoccerPress.png"
+                on_release: 
+                    self.source = "icons//soccer-ball.png"
+            ImageButton:
+                size_hint: 0.1, 0.1
+                source: "icons//tennis-racket.png"
+                on_release: root.tennis()
+                on_press: 
+                    self.source = "icons//PressTennis.png"
+                on_release: 
+                    self.source = "icons//tennis-racket.png"
+        GridLayout:
+            cols:1
+            size_hint: .5, .5
+            padding: 20, 20
+            spacing: 5, 5
+            ImageButton:
+                size_hint: 0.1, 0.1
+                source: "icons//ice-hockey.png"
+                on_release: root.hockey()
+                on_press: 
+                    self.source = "icons//hockeyPress.png"
+                on_release: 
+                    self.source = "icons//ice-hockey.png"
+        GridLayout:
+            cols:2
+            size_hint: .5, .5
+            padding: 20, 20
+            spacing: 5, 5
+            ImageButton:
+                size_hint: 0.1, 0.1
+                source: "icons//baseball-bat.png"
+                on_release: root.baseball()
+                on_press: 
+                    self.source = "icons//BaseballPress.png"
+                on_release: 
+                    self.source = "icons//baseball-bat.png"
+            ImageButton:
+                size_hint: 0.1, 0.1
+                source: "icons//american-football.png"
+                on_release: root.football()
+                on_press: 
+                    self.source = "icons//FootballPress.png"
+                on_release: 
+                    self.source = "american-football.png"
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            padding: 10,10
+            spacing: 5,5
+            TextInput:
+                hint_text: "Enter a word you want defined"
+            RelativeLayout:
+                Button:
+                    text: "Define"
+                    on_press: root.word_meaning(root.ids.Word.text)
+                    size_hint: 0.9, 0.3
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+
+
+        GridLayout:
+            size_hint: 0.2, 0.2
+            cols:1
+            Label:
+                text: "pictures are not owned by me"
+
+<SoccerScreen>:
+    GridLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#69B3F23")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        cols:1
+        GridLayout:
+            cols:1
+            size_hint: 1,1
+            padding: 10,10
+            spacing: 5,5
+            TextInput:
+                hint_text: "Enter a word you want defined"
+            RelativeLayout:
+                Button:
+                    text: "Define"
+                    on_press: root.word_meaning(root.ids.Word.text)
+                    size_hint: 0.9, 0.3
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+    
+        
+
+<BaseballScreen>:
+    GridLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#69B3F23")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        cols:1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "BASEBALL"
+
+<TennisScreen>:
+    GridLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#69B3F23")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        cols:1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "TENNIS"
+
+<FootballScreen>:
+    GridLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#69B3F23")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        cols:1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "AMERICAN FOOTBALL"
+
+<HockeyScreen>:
+    GridLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#69B3F23")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        cols:1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "ICE HOCKEY"
+
+
+<LoginSuccess>:
+    GridLayout:
+        cols: 1
+        Button: 
+            text: "logout"
+            on_press: root.log_out()
+        Label: 
+            text: "how do you feel"
+        TextInput: 
+            id: feeling
+            hint_text: "sad, unloved, happy"
+        Button:
+            text: "enlighten me"
+            on_press: root.get_quote(root.ids.feeling.text)
+        Label:
+            id: quotes
+            text: ""
+
+        
+<RootWidget>:
+    LoginScreen:
+        name: "Login_Screen"
+    SoccerScreen:
+        name: "Soccer_screen"
+    BaseballScreen:
+        name: "Baseball_screen"
+    TennisScreen:
+        name: "Tennis_screen"
+    FootballScreen:
+        name: "Football_screen"
+    HockeyScreen:
+        name: "Hockey_screen"
+    LoginSuccess:
+        name: "Login_success"
